@@ -14,7 +14,7 @@ echo "---> Installing application source"
 cp -Rf /tmp/src/*.html ./
 
 echo "---> Creating info page"
-DATE= "$(date + %F)"
+DATE= "$(date +%F)"
 
 echo  "Saurabh Creadet tis on $DATE" >> ./info.html
 
