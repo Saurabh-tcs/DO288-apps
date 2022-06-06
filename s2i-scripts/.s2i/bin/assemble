@@ -14,9 +14,9 @@ echo "---> Installing application source"
 cp -Rf /tmp/src/*.html ./
 
 echo "---> Creating info page"
-DATE= "$(date +%F)"
+DATE="$(date +%F)"
 
-echo  "Saurabh Creadet tis on $DATE" >> ./info.html
+echo "Saurabh Creadet tis on $DATE" >> ./info.html
 
 echo "Proudly served by Apache HTTP Server version $HTTPD_VERSION" >> ./info.html
 
