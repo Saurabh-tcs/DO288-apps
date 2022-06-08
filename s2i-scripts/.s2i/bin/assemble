@@ -12,8 +12,11 @@ config_s2i
 
 echo "---> Installing application source"
 
-
+cp -Rf /tmp/src/*.html ./
 echo "---> Creating info page"
+
+DATE="$(date +%F)"
+echo "ThiS page is built by Saurabh G on $DATE" >> ./info.html
 
 echo "Proudly served by Apache HTTP Server version $HTTPD_VERSION" >> ./info.html
 
