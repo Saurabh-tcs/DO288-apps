@@ -18,7 +18,7 @@ echo "---> Creating info page"
 
 DATE="$(date +%F)"
 
-echo "Saruabh G Created this from S2I on $date" >> ./info.html
+echo "Saruabh G Created this from S2I on $DATE" >> ./info.html
 
 echo "Proudly served by Apache HTTP Server version $HTTPD_VERSION" >> ./info.html
 
