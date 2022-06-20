@@ -1,2 +1,23 @@
-# Use the httpd-parent image as base
 FROM quay.io/redhattraining/httpd-parent
+
+#EXPOS 8080
+EXPOSE 8080
+
+#ADD LABES
+LABEL io.k8s.description="HEllo this is saurabh G" \
+      io.k8s.display-name="SUPA JUPA BUPA" \
+      io.openshift.expose-services="8080:http" \
+      io.openshift.tags="apache, http" 
+
+#CHANGE CONF
+RUN sed -i "s/Listen 80/Listen 8080/g" /etc/httpd/conf/httpd.conf && \
+    sed -i "s/#ServerName www.example.com:80/ServerName 0.0.0.0:8080/g" /etc/httpd/conf/httpd.conf
+
+#CHANGE PRIVLE
+
+RUN chgrp -R 0 /var/run/httpd /var/log/httpd && \
+    chmod -R g=u /var/run/httpd /var/log/httpd 
+
+#ADD DEFAULT USER
+USER 1001
+

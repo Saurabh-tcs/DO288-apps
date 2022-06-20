@@ -1,0 +1,26 @@
+# Use the httpd-parent image as base
+FROM quay.io/redhattraining/httpd-parent
+
+#Change the Port to 80
+EXPOSE 8080
+
+#Labels consumed by Openshift
+LABEL  io.k8s.description="This is httpd runtime" \
+       io.k8s.display-name="Http SG Runtime" \
+       io.openshift.expose-services="8080:http" \
+       io.openshift.tags="apache, httpd"
+
+#Change the webserver to Port 80
+
+RUN sed -i "s/Listen 80/Listen 8080/g" /etc/httpd/conf/httpd.conf && \
+    sed -i "s/#ServerName www.example.com:80/ServerName 0.0.0.0:8080/g" /etc/httpd/conf/httpd.conf
+
+#Permissions to allow container to run on Openshift
+
+RUN chgrp -R 0 /var/run/httpd /var/log/httpd && \
+    chmod -R g=u /var/log/httpd /var/run/httpd
+    
+#Run as a non priviledged-user
+USER 1001
+
+
