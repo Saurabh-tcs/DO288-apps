@@ -83,7 +83,7 @@ affinity: {}
 
 mariadb:
   auth:
-    usernmae: quotes
+    username: quotes
     password: quotespwd
     database: quotesdb
     rootPassword: quotespwd
